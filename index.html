@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindset 3 Unit 3</title>
+<style>
+  :root{
+    --navy:#1b2a41; --blue:#2f6690; --teal:#3a7d8c; --sand:#f6f3ea;
+    --card:#ffffff; --ok:#2e7d32; --bad:#c0392b; --muted:#6b7280; --line:#e5e0d3;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',Tahoma,Verdana,sans-serif;background:var(--sand);color:#222;line-height:1.6;}
+  header{background:var(--navy);color:#fff;padding:28px 20px;text-align:center;}
+  header h1{margin:0;font-size:1.6em;}
+  header p{margin:6px 0 0;color:#cfd8e3;}
+  .wrap{max-width:900px;margin:0 auto;padding:20px;}
+  .section-title{background:var(--navy);color:#fff;padding:10px 18px;border-radius:8px;font-size:1.2em;margin:30px 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .ex-title{color:var(--navy);font-size:1.15em;margin:0 0 4px;border-bottom:3px solid var(--teal);display:inline-block;padding-bottom:4px;}
+  .ex-instructions{color:var(--muted);font-style:italic;margin:8px 0 16px;}
+  .q{margin:14px 0;padding:10px 0;border-bottom:1px solid #f0ede2;}
+  .q:last-child{border-bottom:none;}
+  .q-num{font-weight:700;color:var(--navy);margin-right:6px;}
+  .opts label{display:inline-block;margin:4px 14px 4px 0;cursor:pointer;}
+  .blank-input{border:none;border-bottom:2px solid var(--blue);background:transparent;padding:4px 6px;font-size:1em;width:150px;text-align:center;font-family:inherit;}
+  .blank-input:focus{outline:none;border-color:var(--teal);}
+  select.blank-input{width:180px;}
+  .wordbank{background:#eef3f6;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-weight:600;color:var(--blue);letter-spacing:.5px;}
+  .feedback{margin-left:8px;font-weight:700;}
+  .feedback.correct{color:var(--ok);}
+  .feedback.wrong{color:var(--bad);}
+  .correct-answer{color:var(--ok);font-style:italic;margin-left:6px;}
+  .locked{opacity:.85;}
+  .submit-bar{position:sticky;bottom:0;background:var(--sand);padding:16px 0;text-align:center;border-top:1px solid var(--line);}
+  button{background:var(--blue);color:#fff;border:none;padding:12px 26px;border-radius:8px;font-size:1.05em;cursor:pointer;font-weight:600;}
+  button:hover{background:var(--teal);}
+  button.secondary{background:transparent;color:var(--blue);border:2px solid var(--blue);}
+  #scoreBoard{max-width:900px;margin:0 auto;padding:0 20px;}
+  #scoreBoard .score-card{background:var(--navy);color:#fff;border-radius:12px;padding:20px 24px;text-align:center;margin-bottom:20px;display:none;}
+  #scoreBoard .score-card h2{margin:0 0 4px;font-size:2em;}
+  .passage{line-height:2.1;}
+  .infobox{background:#faf9f4;border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:.95em;}
+  .infobox ul{margin:8px 0 0;padding-left:22px;}
+  .infobox li{margin-bottom:6px;}
+  .dialogue{line-height:2.3;}
+  .dialogue b{color:var(--navy);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mindset 3 Unit 3</h1>
+  <p>Education and Employment — Vocabulary &amp; Grammar</p>
+</header>
+
+<div id="scoreBoard">
+  <div class="score-card" id="scoreCard">
+    <h2 id="scoreText">0 / 0</h2>
+    <p id="scoreMsg"></p>
+  </div>
+</div>
+
+<div class="wrap" id="quizArea">
+
+<div class="section-title">A. Vocabulary: Jobs, Work, Study, Courses, Feelings and Experiences</div>
+
+  <!-- VOCAB EXERCISE 1 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 1</h2>
+    <p class="ex-instructions">Match the people with the descriptions of the jobs. <em>This person ...</em></p>
+    <div class="wordbank">a chef &nbsp; a doctor &nbsp; a lawyer &nbsp; a manager &nbsp; a programmer &nbsp; a soldier &nbsp; a teacher &nbsp; a vet &nbsp; an accountant &nbsp; an engineer</div>
+    <div id="vex1"></div>
+  </div>
+
+  <!-- VOCAB EXERCISE 2 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 2</h2>
+    <p class="ex-instructions">Complete the sentences. Use the words in the box.</p>
+    <div class="wordbank">annoyed &nbsp; boring &nbsp; disappointed &nbsp; disgusting &nbsp; excited &nbsp; exhausted &nbsp; interested &nbsp; surprised &nbsp; terrifying &nbsp; worrying</div>
+    <div id="vex2"></div>
+  </div>
+
+  <!-- VOCAB EXERCISE 3 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 3</h2>
+    <p class="ex-instructions">Choose the correct prepositions to complete the text.</p>
+    <p class="passage" id="vex3"></p>
+  </div>
+
+  <!-- VOCAB EXERCISE 4 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 4</h2>
+    <p class="ex-instructions">Match the explanations with the statements.</p>
+    <div id="vex4"></div>
+  </div>
+
+  <!-- VOCAB EXERCISE 5 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 5</h2>
+    <p class="ex-instructions">Complete the text. Use the words in the box.</p>
+    <div class="wordbank">college &nbsp; evening classes &nbsp; nursery school &nbsp; postgraduate course &nbsp; primary school &nbsp; private lessons &nbsp; secondary school &nbsp; training courses &nbsp; university &nbsp; work placement</div>
+    <p class="passage" id="vex5"></p>
+  </div>
+
+<div class="section-title">B. Grammar: Present Perfect</div>
+
+  <!-- GRAMMAR EXERCISE 1 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 1</h2>
+    <p class="ex-instructions">Match the present results (present simple) with the past events (present perfect).</p>
+    <div id="gex1"></div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE 2 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 2</h2>
+    <p class="ex-instructions">Complete the sentences. Use the past participle of the irregular verbs in brackets.</p>
+    <div id="gex2"></div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE 3 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 3</h2>
+    <p class="ex-instructions">Read the information. Then choose the correct answers to complete the conversation.</p>
+    <div class="infobox">
+      <p>The words <em>already</em>, <em>yet</em> and <em>just</em> have slightly different meanings.</p>
+      <ul>
+        <li><em>already</em> = before now, or before a particular time in the past. <b>Example:</b> <em>I've already done it.</em> = I did it in the past so I don't need/plan to do it again.</li>
+        <li><em>yet</em> = before now or before that time. <b>Example:</b> <em>I haven't done it yet.</em> = I didn't do it in the past so I still need/plan to do it in the future.</li>
+        <li><em>just</em> = a very short time ago. <b>Example:</b> <em>I've just done it.</em> = I did it very recently (e.g. in the last few minutes).</li>
+      </ul>
+    </div>
+    <p class="dialogue" id="gex3"></p>
+  </div>
+
+  <!-- GRAMMAR EXERCISE 4 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 4</h2>
+    <p class="ex-instructions">Complete the sentences. Use the words in brackets with the present perfect. Use contractions where possible (e.g. <em>haven't</em>). The first one has been done for you.</p>
+    <div id="gex4"></div>
+  </div>
+
+  <!-- GRAMMAR EXERCISE 5 -->
+  <div class="card">
+    <h2 class="ex-title">Exercise 5</h2>
+    <p class="ex-instructions">Correct the questions. Use the present perfect. Use contractions where possible (e.g. <em>hasn't</em>). Type the full corrected question. The first one has been done for you.</p>
+    <div id="gex5"></div>
+  </div>
+
+  <div class="submit-bar">
+    <button onclick="gradeAll()">✅ Check my answers</button>
+    <button class="secondary" onclick="resetAll()">↺ Reset</button>
+  </div>
+
+</div>
+
+<script>
+/* ================= ANSWER KEY ================= */
+const KEY = {
+  vex1: ["a doctor","an engineer","a chef","a soldier","an accountant","a lawyer","a teacher","a programmer","a vet","a manager"],
+  vex2: ["boring","interested","excited","worrying","disappointed","terrifying","annoyed","disgusting","surprised","exhausted"],
+  vex3: ["to","at","in","about","from","for","for","as","at","in"],
+  vex4: ["a","b","c","d","e","f","g","h","i","j"],
+  vex5: ["nursery school","primary school","secondary school","private lessons","college","university","work placement","postgraduate course","evening classes","training courses"],
+  gex1: ["b","f","g","d","e","a","c","h"],
+  gex2: ["become","chosen","forgotten","taught","sent","been","written","learned","had","shown"],
+  gex3: ["just","yet","just","yet","already","yet","yet","just","yet","already"],
+  gex4: [
+    "I've passed",
+    "hasn't checked it yet",
+    "I've already decided",
+    "I haven't told",
+    "they haven't contacted me yet",
+    "We've already done",
+    "I've failed"
+  ],
+  gex5: [
+    "Where's Lisa gone?",
+    "Has anybody seen my bag?",
+    "Why haven't you finished your report?",
+    "Have you heard the news?",
+    "What have you done to your hair?"
+  ]
+};
+
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase().replace(/['".,!?]/g,"").replace(/\s+/g," ");
+}
+function mark(elId, isCorrect, correctText){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  if(isCorrect){ el.innerHTML = "✔"; el.className="feedback correct"; }
+  else { el.innerHTML = `✘ <span class="correct-answer">(answer: ${correctText})</span>`; el.className="feedback wrong"; }
+}
+function getRadio(name){
+  const r = document.querySelector(`input[name="${name}"]:checked`);
+  return r ? r.value : null;
+}
+
+/* ================= VOCAB EX1 ================= */
+const vex1data = [
+  "looks after people who are ill or hurt",
+  "designs or builds machines, equipment or roads, etc.",
+  "cooks food in a restaurant",
+  "protects his or her country",
+  "keeps information about money that a company or person receives, pays or owes",
+  "gives people and businesses advice about the law",
+  "works in a school or college",
+  "produces computer programs",
+  "looks after sick animals",
+  "is responsible for a team of people or a project"
+];
+const wb1 = ["a chef","a doctor","a lawyer","a manager","a programmer","a soldier","a teacher","a vet","an accountant","an engineer"];
+document.getElementById('vex1').innerHTML = vex1data.map((t,i)=>`
+  <div class="q"><span class="q-num">${i+1}.</span> This person ${t}:
+  <select class="blank-input" id="vex1-${i}">
+    <option value="">--</option>
+    ${wb1.map(w=>`<option value="${w}">${w}</option>`).join('')}
+  </select>
+  <span class="feedback" id="vex1-fb-${i}"></span></div>
+`).join('');
+
+/* ================= VOCAB EX2 ================= */
+const vex2data = [
+  "I never did anything interesting in my old job. It was really ___.",
+  "I was very ___ to hear about Maria's new job. It sounds fascinating.",
+  "My sister's really ___ about her new project at work. She can't wait to start!",
+  "It's quite ___ that so many young people are looking for jobs after they leave university.",
+  "I was ___ when they didn't invite me for a job interview, but I'm sure I'll find a new job soon.",
+  "James works as an engineer building very tall buildings. His work looks absolutely ___!",
+  "I was really ___ when he cancelled the meeting and he didn't even tell me.",
+  "They treat their workers really badly. I think it's ___.",
+  "I was ___ when they offered me the job. I didn't think that I'd done very well in the interview.",
+  "I had to work late today and now I'm absolutely ___."
+];
+document.getElementById('vex2').innerHTML = vex2data.map((t,i)=>{
+  const [p1,p2] = t.split("___");
+  return `<div class="q"><span class="q-num">${i+1}.</span> ${p1}<input class="blank-input" id="vex2-${i}">${p2}<span class="feedback" id="vex2-fb-${i}"></span></div>`;
+}).join('');
+
+/* ================= VOCAB EX3 ================= */
+const vex3parts = [
+  "After I left school, I decided to go ", " university. I studied ", " university for three years. I did a degree ",
+  " marketing. It was very interesting. I learnt all ", " sales and marketing. When I graduated ",
+  " university, I needed to get a job. I wanted to work ", " a large international company. I applied ",
+  " lots of jobs, but it was difficult because I didn't have any experience. In the end, I got a job ",
+  " a marketing assistant. It was a bit boring, but I was very good ", " my job. After a few years, I was offered a job as a marketing manager and was given an increase ", " salary."
+];
+const vex3opts = [
+  ["at","on","to"], ["at","by","on"], ["for","in","of"], ["about","on","over"], ["for","from","on"],
+  ["as","by","for"], ["for","on","with"], ["as","at","for"], ["at","from","to"], ["as","in","of"]
+];
+document.getElementById('vex3').innerHTML = vex3parts.map((p,i)=>{
+  if(i===vex3parts.length-1) return p;
+  const opts = vex3opts[i];
+  return p + `<select class="blank-input" id="vex3-${i}" style="width:90px"><option value="">--</option>${opts.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><span class="feedback" id="vex3-fb-${i}"></span>`;
+}).join('');
+
+/* ================= VOCAB EX4 ================= */
+const vex4data = [
+  "I'm grateful for your help.",
+  "I'm nervous about my exam.",
+  "I'm pleased with my results.",
+  "I'm furious with my sister.",
+  "I'm relieved that everything's OK.",
+  "I'm impressed by your work.",
+  "I'm annoyed about the changes.",
+  "I'm upset about what you said.",
+  "I'm positive about the future.",
+  "I'm scared of my boss."
+];
+const vex4answers = {
+  a:"I want to thank you for it.",
+  b:"I'm worried about it.",
+  c:"I'm happy about them.",
+  d:"I'm extremely angry with her.",
+  e:"I was worried, but now I'm not.",
+  f:"I think it's good — you've done a great job.",
+  g:"I'm angry about them because they make my life difficult.",
+  h:"It makes me unhappy.",
+  i:"I'm confident. I think it'll be great.",
+  j:"I'm frightened of him/her."
+};
+document.getElementById('vex4').innerHTML = vex4data.map((t,i)=>`
+  <div class="q"><span class="q-num">${i+1}.</span> ${t}
+  <select class="blank-input" id="vex4-${i}" style="width:100%;max-width:420px;">
+    <option value="">--</option>
+    ${Object.keys(vex4answers).map(k=>`<option value="${k}">${vex4answers[k]}</option>`).join('')}
+  </select>
+  <span class="feedback" id="vex4-fb-${i}"></span></div>
+`).join('');
+
+/* ================= VOCAB EX5 ================= */
+const vex5parts = [
+  "In my country, many very young children go to ", ", but they don't have to go. The first school you must go to is ",
+  ". This is for children aged five to eleven years old. Older children go to ", ", where they have lots of homework and exams. Here, they study subjects like Geography, History and IT. Some children have ",
+  ", for example they might have extra English classes, which their parents pay for. Some people stop their education after secondary school, but many continue their education by going to ",
+  ". In my country, they usually study just a few subjects at college. You can study for a degree at ",
+  ". You need to do this if you want to become a teacher, a lawyer or an engineer, for example. Many university courses include a ",
+  ", where students spend a few months in a place of work and learn some practical skills. After graduating from university, some students stay at a university to do a ",
+  ". Education doesn't stop when you leave school or university. Many people go to ", " which they attend after a full day at work. You can also learn a lot at work by going on ",
+  ". For example, you might learn how to use new computer software or how to communicate with customers."
+];
+const wb5 = ["college","evening classes","nursery school","postgraduate course","primary school","private lessons","secondary school","training courses","university","work placement"];
+document.getElementById('vex5').innerHTML = vex5parts.map((p,i)=>{
+  if(i===vex5parts.length-1) return p;
+  return p + `<select class="blank-input" id="vex5-${i}"><option value="">--</option>${wb5.map(w=>`<option value="${w}">${w}</option>`).join('')}</select><span class="feedback" id="vex5-fb-${i}"></span>`;
+}).join('');
+
+/* ================= GRAMMAR EX1 ================= */
+const gex1starts = [
+  "I've finished university.",
+  "Andy's found a new job.",
+  "I've lost my school bag.",
+  "They've offered me a better job.",
+  "I've done all my homework.",
+  "My grandparents have retired.",
+  "Daniel's broken his arm.",
+  "Helena's left school."
+];
+const gex1ends = {
+  a:"I have a degree.",
+  b:"He now works for a bank.",
+  c:"They don't go to work any more.",
+  d:"I can relax tonight.",
+  e:"Now she needs to find a job.",
+  f:"I can't find it everywhere.",
+  g:"He can't go to school this week.",
+  h:"Do you think I should accept it?"
+};
+document.getElementById('gex1').innerHTML = gex1starts.map((t,i)=>`
+  <div class="q"><span class="q-num">${i+1}.</span> ${t}
+  <select class="blank-input" id="gex1-${i}" style="width:100%;max-width:420px;">
+    <option value="">--</option>
+    ${Object.keys(gex1ends).map(k=>`<option value="${k}">${gex1ends[k]}</option>`).join('')}
+  </select>
+  <span class="feedback" id="gex1-fb-${i}"></span></div>
+`).join('');
+
+/* ================= GRAMMAR EX2 ================= */
+const gex2data = [
+  "He wasn't very good when he started, but he's ___ (become) a very good teacher in the last few years.",
+  "Have you ___ (chose) a career yet? Do you know what you want to do when you leave school?",
+  "I studied History for five years at school, but now I've ___ (forget) almost everything.",
+  "It's been a very useful course and you're a great teacher — you've ___ (teach) me a lot.",
+  "I've ___ (send) emails to lots of companies asking for a job, but nobody's offered me one yet.",
+  "Have you ___ (be) on any training courses this year?",
+  "I need to write a 10,000-word essay by the end of my course, but I've only ___ (write) 2,500 words so far.",
+  "I studied Business at university, but I've ___ (learn) more in my first month at work than in three years at university.",
+  "Sorry I haven't finished the presentation yet. I haven't ___ (have) time.",
+  "OK, so now that I've ___ (show) you what to do, it's your turn."
+];
+document.getElementById('gex2').innerHTML = gex2data.map((t,i)=>{
+  const [p1,p2] = t.split("___");
+  return `<div class="q"><span class="q-num">${i+1}.</span> ${p1}<input class="blank-input" id="gex2-${i}">${p2}<span class="feedback" id="gex2-fb-${i}"></span></div>`;
+}).join('');
+
+/* ================= GRAMMAR EX3 ================= */
+const gex3blanks = [
+  {opts:["already","just","yet"]}, {opts:["just","yet"]}, {opts:["just","yet"]}, {opts:["already","just","yet"]},
+  {opts:["already","just","yet"]}, {opts:["just","yet"]}, {opts:["already","just","yet"]}, {opts:["just","yet"]},
+  {opts:["just","yet"]}, {opts:["already","just","yet"]}
+];
+function sel(i){
+  const o = gex3blanks[i].opts;
+  return `<select class="blank-input" id="gex3-${i}" style="width:90px;display:inline-block;"><option value="">--</option>${o.map(x=>`<option value="${x}">${x}</option>`).join('')}</select><span class="feedback" id="gex3-fb-${i}"></span>`;
+}
+document.getElementById('gex3').innerHTML = `
+<b>A:</b> Hey, I've ${sel(0)} remembered. We need to hand in our essays tomorrow. Have you started writing yours ${sel(1)}?<br>
+<b>B:</b> Actually, I've ${sel(2)} started. I started planning it half an hour ago. But I haven't written anything ${sel(3)}. I'm still thinking about what to write. What about you?<br>
+<b>A:</b> I started working on it at the weekend. I've ${sel(4)} written about half of it, but there's still a lot of work to do.<br>
+<b>B:</b> Oh, that's not so bad. And have you planned everything ${sel(5)}?<br>
+<b>A:</b> No, I haven't planned the end ${sel(6)}. I mean, the first half's good, but I don't know what to write for the ending. What about you?<br>
+<b>B:</b> I've ${sel(7)} told you! I started half an hour ago!<br>
+<b>A:</b> Oh, yes, sorry. And what about David? Has he started ${sel(8)}?<br>
+<b>B:</b> Started? He's ${sel(9)} finished! He wrote the whole essay last weekend!
+`;
+
+/* ================= GRAMMAR EX4 ================= */
+const gex4data = [
+  {prompt:"My sister's just started university — it's her first week this week.", cue:"(my sister / just / start)", example:true},
+  {prompt:"I'm really pleased. ___ all my exams.", cue:"(I / pass)"},
+  {prompt:"We finished our project over a month ago, but our teacher ___.", cue:"(not / check / it / yet)"},
+  {prompt:"___ to go to evening classes to learn how to write computer programs.", cue:"(I / already / decide)"},
+  {prompt:"Don't worry. ___ anybody your exam results.", cue:"(I / not / tell)"},
+  {prompt:"I think the job interview went well, but ___, so I don't know if I've got the job or not.", cue:"(they / not / contact / me / yet)"},
+  {prompt:"Why are we doing this training course again? ___ it three times!", cue:"(we / already / do)"},
+  {prompt:"I'm really worried. I think ___ my end-of-course test.", cue:"(I / fail)"}
+];
+document.getElementById('gex4').innerHTML = gex4data.map((it,i)=>{
+  if(it.example){
+    return `<div class="q"><span class="q-num">1.</span> <u>${it.prompt}</u> <span style="color:var(--muted);">${it.cue}</span></div>`;
+  }
+  const [p1,p2] = it.prompt.split("___");
+  return `<div class="q"><span class="q-num">${i+1}.</span> ${p1}<input class="blank-input" id="gex4-${i-1}" style="width:220px">${p2} <span style="color:var(--muted);">${it.cue}</span><span class="feedback" id="gex4-fb-${i-1}"></span></div>`;
+}).join('');
+
+/* ================= GRAMMAR EX5 ================= */
+const gex5data = [
+  {t:"You take all your exams yet? I've already finished mine.", example:"Have you taken all your exams yet?"},
+  "Where Lisa go? She was here a second ago.",
+  "Anybody see my bag? I can't find it.",
+  "Why you not finish your report? I asked you to hand it in today.",
+  "You hear the news? They've offered me a promotion!",
+  "What you do to your hair? It looks terrible!"
+];
+document.getElementById('gex5').innerHTML = gex5data.map((t,i)=>{
+  if(i===0){
+    return `<div class="q"><span class="q-num">1.</span> <span style="color:var(--muted);">${t.t}</span><br><u>${t.example}</u></div>`;
+  }
+  return `<div class="q"><span class="q-num">${i+1}.</span> <span style="color:var(--muted);">${t}</span><br>
+  <input class="blank-input" id="gex5-${i-1}" style="width:100%;max-width:500px;">
+  <span class="feedback" id="gex5-fb-${i-1}"></span></div>`;
+}).join('');
+
+/* ================= GRADING ================= */
+function gradeAll(){
+  let total=0, scored=0;
+
+  KEY.vex1.forEach((ans,i)=>{
+    const v = document.getElementById(`vex1-${i}`).value;
+    const ok = v===ans;
+    total++; if(ok) scored++;
+    mark(`vex1-fb-${i}`, ok, ans);
+  });
+
+  KEY.vex2.forEach((ans,i)=>{
+    const v = document.getElementById(`vex2-${i}`).value;
+    const ok = normalize(v)===normalize(ans);
+    total++; if(ok) scored++;
+    mark(`vex2-fb-${i}`, ok, ans);
+  });
+
+  KEY.vex3.forEach((ans,i)=>{
+    const v = document.getElementById(`vex3-${i}`).value;
+    const ok = v===ans;
+    total++; if(ok) scored++;
+    mark(`vex3-fb-${i}`, ok, ans);
+  });
+
+  KEY.vex4.forEach((ans,i)=>{
+    const v = document.getElementById(`vex4-${i}`).value;
+    const ok = v===ans;
+    total++; if(ok) scored++;
+    mark(`vex4-fb-${i}`, ok, vex4answers[ans]);
+  });
+
+  KEY.vex5.forEach((ans,i)=>{
+    const v = document.getElementById(`vex5-${i}`).value;
+    const ok = v===ans;
+    total++; if(ok) scored++;
+    mark(`vex5-fb-${i}`, ok, ans);
+  });
+
+  KEY.gex1.forEach((ans,i)=>{
+    const v = document.getElementById(`gex1-${i}`).value;
+    const ok = v===ans;
+    total++; if(ok) scored++;
+    mark(`gex1-fb-${i}`, ok, gex1ends[ans]);
+  });
+
+  KEY.gex2.forEach((ans,i)=>{
+    const v = document.getElementById(`gex2-${i}`).value;
+    const ok = normalize(v)===normalize(ans);
+    total++; if(ok) scored++;
+    mark(`gex2-fb-${i}`, ok, ans);
+  });
+
+  KEY.gex3.forEach((ans,i)=>{
+    const v = document.getElementById(`gex3-${i}`).value;
+    const ok = v===ans;
+    total++; if(ok) scored++;
+    mark(`gex3-fb-${i}`, ok, ans);
+  });
+
+  KEY.gex4.forEach((ans,i)=>{
+    const v = document.getElementById(`gex4-${i}`).value;
+    const ok = normalize(v)===normalize(ans);
+    total++; if(ok) scored++;
+    mark(`gex4-fb-${i}`, ok, ans);
+  });
+
+  KEY.gex5.forEach((ans,i)=>{
+    const v = document.getElementById(`gex5-${i}`).value;
+    const ok = normalize(v)===normalize(ans);
+    total++; if(ok) scored++;
+    mark(`gex5-fb-${i}`, ok, ans);
+  });
+
+  document.querySelectorAll('#quizArea input, #quizArea select').forEach(el=>{ el.disabled = true; });
+  document.getElementById('quizArea').classList.add('locked');
+
+  document.getElementById('scoreCard').style.display='block';
+  document.getElementById('scoreText').textContent = `${scored} / ${total}`;
+  const pct = Math.round((scored/total)*100);
+  let msg = "";
+  if(pct>=90) msg="Excellent work! 🎉";
+  else if(pct>=70) msg="Good job — review the ones you missed.";
+  else if(pct>=50) msg="Nice try — check the highlighted answers.";
+  else msg="Keep practicing — review this unit's material and try again.";
+  document.getElementById('scoreMsg').textContent = `${pct}% correct. ${msg}`;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function resetAll(){ location.reload(); }
+</script>
+
+</body>
+</html>
